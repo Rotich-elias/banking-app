@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotich Bank - Online Banking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-university"></i>
+                    <h1>Rotich Bank</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#" class="nav-link active">Dashboard</a>
+                    <a href="#" class="nav-link">Accounts</a>
+                    <a href="#" class="nav-link">Transfer</a>
+                    <a href="#" class="nav-link">Settings</a>
+                </nav>
+                <div class="user-info">
+                    <span class="user-name">John Doe</span>
+                    <button class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Account Overview Section -->
+            <section class="account-overview">
+                <div class="section-header">
+                    <h2>Account Overview</h2>
+                    <span class="last-updated">Last updated: <span id="last-updated-time"></span></span>
+                </div>
+                
+                <div class="account-cards">
+                    <div class="account-card primary">
+                        <div class="account-info">
+                            <h3>Checking Account</h3>
+                            <p class="account-number">****1234</p>
+                        </div>
+                        <div class="balance">
+                            <span class="balance-label">Available Balance</span>
+                            <span class="balance-amount" id="checking-balance">$5,247.83</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-card">
+                        <div class="account-info">
+                            <h3>Savings Account</h3>
+                            <p class="account-number">****5678</p>
+                        </div>
+                        <div class="balance">
+                            <span class="balance-label">Available Balance</span>
+                            <span class="balance-amount" id="savings-balance">$12,856.42</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Transactions Section -->
+            <section class="transactions-section">
+                <div class="section-header">
+                    <h2>Recent Transactions</h2>
+                    <button class="view-all-btn">View All</button>
+                </div>
+                
+                <div class="transactions-container">
+                    <div class="transaction-list" id="transaction-list">
+                        <!-- Transactions will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Money Transfer Section -->
+            <section class="transfer-section">
+                <div class="section-header">
+                    <h2>Quick Transfer</h2>
+                </div>
+                
+                <form class="transfer-form" id="transfer-form">
+                    <div class="form-group">
+                        <label for="from-account">From Account</label>
+                        <select id="from-account" name="from-account" required>
+                            <option value="checking">Checking Account (****1234)</option>
+                            <option value="savings">Savings Account (****5678)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="to-account">To Account/Recipient</label>
+                        <input type="text" id="to-account" name="to-account" placeholder="Enter account number or recipient name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <div class="amount-input">
+                            <span class="currency">$</span>
+                            <input type="number" id="amount" name="amount" placeholder="0.00" step="0.01" min="0.01" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description (Optional)</label>
+                        <input type="text" id="description" name="description" placeholder="What's this transfer for?">
+                    </div>
+                    
+                    <button type="submit" class="transfer-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Transfer
+                    </button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h3>Transfer Successful!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Your transfer has been processed successfully.</p>
+                <div class="transfer-details" id="transfer-details">
+                    <!-- Transfer details will be populated by JavaScript -->
+                </div>
+            </div>
+            <button class="modal-close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
